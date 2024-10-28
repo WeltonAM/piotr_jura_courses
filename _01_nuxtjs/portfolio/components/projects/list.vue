@@ -11,7 +11,8 @@
                     :key="repo.id"
                     class="
                         border border-gray-200 rounded-sm p-4
-                        hover:bg-gray-100 font-mono
+                        font-mono
+                        hover:bg-gray-100 dark:hover:bg-gray-800
                     "
                 >
                     <a :href="repo.html_url" target="_blank">
