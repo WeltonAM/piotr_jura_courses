@@ -1,15 +1,5 @@
 <template>
-    <div>
-        <h1>This page is about me</h1>
-        <slot />
-        <div>
-            <NuxtLink to="/blog/1">BLOG 1</NuxtLink>
-        </div>
-    </div>
+    <article class="prose dark:prose-invert prose-h1:text-2xl">
+        <ContentDoc path="/about" />
+    </article>
 </template>
-
-<script setup>
-    useHead({
-        title: 'About',
-    })
-</script>
