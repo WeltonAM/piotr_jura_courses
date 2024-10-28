@@ -1,11 +1,5 @@
 <template>
-    <div>
-        Hello from the main page!
-    </div>
+  <article class="prose dark:prose-invert max-w-none">
+    <ContentDoc path="/" />
+  </article>
 </template>
-
-<script setup>
-    useHead({
-        title: 'Home',
-    })
-</script>
