@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto min-h-screen max-w-2xl">
+    <div class="container mx-auto min-h-screen max-w-4xl">
         <SharedMenu />
         
         <main class="p-2 mt-10">
