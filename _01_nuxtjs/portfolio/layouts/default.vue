@@ -1,8 +1,8 @@
 <template>
     <div class="container mx-auto min-h-screen max-w-2xl">
-        <Menu />
+        <SharedMenu />
         
-        <main class="p-2">
+        <main class="p-2 mt-10">
             <slot />
         </main>
     </div>
@@ -10,7 +10,7 @@
 
 <script setup>
     useHead({
-        title: '%s - WeltonMatosDev',
+        titleTemplate: '%s - WeltonMatosDev',
         link: [
             { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' },
