@@ -18,10 +18,9 @@
         </section>
 
         <section>
-            <Transaction />
-            <Transaction />
-            <Transaction />
-            <Transaction />
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-16 mb-10">
+                <Transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction" />
+            </div>
         </section>
     </div>
 </template>
@@ -30,4 +29,20 @@
 import {transactionViewOptions} from '~/constants'
 
 const selectedView = ref(transactionViewOptions[1])
+
+const supabase = useSupabaseClient()
+
+const transactions = ref([])
+
+const { data, status } = await useAsyncData('transactions', async() => {
+    const { data, error } = await supabase
+        .from('transactions')
+        .select()
+    
+    if (error) throw error
+
+    return data
+})
+
+transactions.value = data
 </script>
