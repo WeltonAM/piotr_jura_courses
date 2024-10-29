@@ -29,12 +29,14 @@ const props = defineProps({
     transaction: Object
 })
 
+const isICome = computed(() => props.transaction.type === 'Income')
+
 const icon = computed(
-    () => props.transaction.type === 'Income' ? 'i-heroicons-arrow-up-right' : 'i-heroicons-arrow-down-left'
+    () => isICome.value ? 'i-heroicons-arrow-up-right' : 'i-heroicons-arrow-down-left'
 )
 
 const iconColor = computed(
-    () => props.transaction.type === 'Income' ? 'text-green-600' : 'text-red-600'
+    () => isICome.value ? 'text-green-600' : 'text-red-600'
 )
 
 const { currency } = useCurrency(props.transaction.amount)
