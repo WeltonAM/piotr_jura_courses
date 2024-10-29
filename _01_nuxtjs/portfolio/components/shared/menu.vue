@@ -1,12 +1,12 @@
 <template>
-    <header class="flex justify-between items-center py-4">
-        <div class="flex items-center space-x-12">
-            <div>
+    <header class="flex justify-between items-start md:items-center mt-5">
+        <div class="flex items-center md:space-x-12">
+            <div class="hidden md:block">
                 <NuxtLink to="/" class="text-2xl font-semibold link">MyBlog</NuxtLink>
             </div>
             
             <nav class="font-mono">
-                <ul class="flex space-x-4">
+                <ul class="flex flex-col md:flex-row md:space-x-4">
                     <li>
                         <NuxtLink to="/" class="link">Home</NuxtLink>
                     </li>

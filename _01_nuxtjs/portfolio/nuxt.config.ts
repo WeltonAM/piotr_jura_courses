@@ -5,6 +5,13 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',
+      appear: true,
+    }
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
