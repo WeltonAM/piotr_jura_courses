@@ -11,10 +11,10 @@
         </section>
         
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-16 mb-10">
-            <Trend color="green" title="Income" :amount="4000" :last-amount="3000" :loading="false" />
-            <Trend color="red" title="Expense" :amount="4000" :last-amount="4100" :loading="false" />
-            <Trend color="green" title="Investments" :amount="4000" :last-amount="3000" :loading="false" />
-            <Trend color="red" title="Saving" :amount="4000" :last-amount="4100" :loading="false" />
+            <Trend color="green" title="Income" :amount="incomeTotal" :last-amount="4100" :loading="isLoading" />
+            <Trend color="red" title="Expense" :amount="expenseTotal" :last-amount="4100" :loading="isLoading" />
+            <Trend color="green" title="Investments" :amount="4000" :last-amount="3000" :loading="isLoading" />
+            <Trend color="red" title="Saving" :amount="4000" :last-amount="4100" :loading="isLoading" />
         </section>
 
         <section class="flex justify-between mb-10">
@@ -54,17 +54,42 @@ const supabase = useSupabaseClient()
 
 const transactions = ref([])
 
-const { data, status } = await useAsyncData('transactions', async() => {
-    const { data, error } = await supabase
-        .from('transactions')
-        .select()
-    
-    if (error) throw error
+const isLoading = ref(false)
 
-    return data
-})
+const income = computed(() => transactions.value.filter(transaction => transaction.type === 'Income'))
+const expense = computed(() => transactions.value.filter(transaction => transaction.type === 'Expense'))
 
-transactions.value = data.value
+const incomeCount = computed(() => income.value.length)
+const expenseCount = computed(() => expense.value.length)
+
+const incomeTotal = computed(() => income.value.reduce((total, transaction) => total + transaction.amount, 0))
+const expenseTotal = computed(() => expense.value.reduce((total, transaction) => total + transaction.amount, 0))
+
+const fetchTransactions = async() => {
+    isLoading.value = true
+
+    try {
+        const { data } = await useAsyncData('transactions', async() => {
+            const { data, error } = await supabase
+                .from('transactions')
+                .select()
+        
+            if (error) throw error
+
+            return data
+        })
+
+        return data.value
+    } finally {
+        isLoading.value = false
+    }
+}
+
+const refresh = async() => {
+    await fetchTransactions()
+}
+
+transactions.value = refresh()
 
 const transactionsGroupedByDate = computed(() => {
     let  grouped = {}
