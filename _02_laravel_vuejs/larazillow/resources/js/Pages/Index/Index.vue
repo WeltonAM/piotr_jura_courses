@@ -1,9 +1,6 @@
 <template>
-    <MainLayout>
-        <h1>Index</h1>
-    </MainLayout>
+    <h1>Index</h1>
 </template>
 
 <script setup>
-import MainLayout from '@/Layouts/MainLayout.vue'
 </script>
