@@ -1,6 +1,7 @@
 <template>
     <MainLayout>
-        <h1>Index</h1>
+        <h1>Show</h1>
+        <Link href="/">Index</Link>
     </MainLayout>
 </template>
 
