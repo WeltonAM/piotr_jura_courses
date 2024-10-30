@@ -37,17 +37,21 @@ const items = [
   [{
     slot: 'account',
     disabled: true
-  }], [{
-    label: 'Settings',
-    icon: 'i-heroicons-cog-8-tooth',
-    click: () => navigateTo('/settings/profile')
-  }, {
-    label: 'Sign out',
-    icon: 'i-heroicons-arrow-left-on-rectangle',
-    click: async () => {
-      await supabase.auth.signOut()
-      return navigateTo('/login')
+  }], 
+  [
+    {
+      label: 'Settings',
+      icon: 'i-heroicons-cog-8-tooth',
+      click: () => navigateTo('/settings/profile')
+    }, 
+    {
+      label: 'Sign out',
+      icon: 'i-heroicons-arrow-left-on-rectangle',
+      click: async () => {
+        await supabase.auth.signOut()
+        return navigateTo('/login')
+      }
     }
-  }]
+  ]
 ]
 </script>
