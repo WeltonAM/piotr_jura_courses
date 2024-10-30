@@ -11,6 +11,19 @@ Make sure to install dependencies:
 npm install
 ```
 
+Go to your Supabase account and set up the following environment variables:
+
+```bash
+create a new project
+create a new secret
+add the following environment variables:
+SUPABASE_URL
+SUPABASE_KEY
+
+create a new table called "transactions"
+setup the policies for the table to allow the authenticated user to read and write
+```
+
 ## Development Server
 
 Start the development server on `http://localhost:3000`:
